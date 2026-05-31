@@ -28,7 +28,7 @@ By completing this project, students will learn to:
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.13
 - OpenAI API key
 - Basic understanding of Python, APIs, and vector databases
 - Familiarity with machine learning concepts
@@ -37,17 +37,30 @@ By completing this project, students will learn to:
 
 1. **Navigate to the project folder**:
    ```bash
-   cd project
+   cd Project-NASA-Mission-Intelligence-Starter
    ```
 
-2. **Install dependencies**:
+2. **Create and activate a virtual environment**:
    ```bash
+   python3.13 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   python3.13 -m pip install --upgrade pip
    pip install -r requirements.txt
    ```
 
-3. **Set up your OpenAI API key**:
+4. **Set up your OpenAI API key**:
    ```bash
    export OPENAI_API_KEY="your-api-key-here"
+   export CHROMA_OPENAI_API_KEY="$OPENAI_API_KEY"
+   ```
+
+5. **Run the Streamlit app**:
+   ```bash
+   streamlit run chat.py
    ```
 
 ## 📚 Learning Path
@@ -285,6 +298,24 @@ Your implementation is successful when:
 - Metric selection and weighting
 - Evaluation frequency settings
 - Display preferences
+
+### **Batch Evaluation**
+The project includes a mission-relevant batch evaluation dataset in `test_questions.json`.
+It contains 6 questions across overview, emergency, disaster analysis, crew, technical,
+and timeline categories.
+
+Run the batch evaluation workflow after building the ChromaDB collection:
+
+```bash
+python batch_evaluate.py \
+  --questions test_questions.json \
+  --chroma-dir chroma_db_openai \
+  --collection-name nasa_space_missions_text
+```
+
+The script retrieves context for each question, generates an answer, computes RAGAS
+metrics, and writes structured results plus aggregate mean scores to
+`batch_evaluation_results.json`.
 
 ## 🏆 Extension Opportunities
 

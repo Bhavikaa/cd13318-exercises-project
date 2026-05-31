@@ -104,7 +104,7 @@ def display_evaluation_metrics(scores: Dict[str, float]):
             st.sidebar.progress(score)
 
 def main():
-    st.title("🚀 NASA Space Mission Chat with Evaluation")
+    st.title("🚀 NASA Space Mission Chat with Evaluation...")
     st.markdown("Chat with AI about NASA space missions with real-time quality evaluation")
     
     # Initialize session state
@@ -156,6 +156,7 @@ def main():
             st.warning("Please enter your OpenAI API key")
             st.stop()
         else:
+            os.environ["OPENAI_API_KEY"] = openai_key
             os.environ["CHROMA_OPENAI_API_KEY"] = openai_key
         
         # Model selection
@@ -168,6 +169,18 @@ def main():
         # Retrieval settings
         st.subheader("🔍 Retrieval Settings")
         n_docs = st.slider("Documents to retrieve", 1, 10, 3)
+        mission_filter_label = st.selectbox(
+            "Mission Filter",
+            options=["All Missions", "Apollo 11", "Apollo 13", "Challenger"],
+            help="Optionally restrict retrieval to one mission"
+        )
+        mission_filter_map = {
+            "All Missions": None,
+            "Apollo 11": "apollo_11",
+            "Apollo 13": "apollo_13",
+            "Challenger": "challenger"
+        }
+        mission_filter = mission_filter_map[mission_filter_label]
         
         # Evaluation settings
         st.subheader("📊 Evaluation Settings")
@@ -214,7 +227,8 @@ def main():
                 docs_result = retrieve_documents(
                     collection, 
                     prompt, 
-                    n_docs
+                    n_docs,
+                    mission_filter
                 )
                 
                 # Format context

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "overview_apollo_11",
+    "category": "overview",
+    "mission": "apollo_11",
+    "question": "What were the main events of the Apollo 11 mission?"
+  },
+  {
+    "id": "emergency_apollo_13",
+    "category": "emergency",
+    "mission": "apollo_13",
+    "question": "What happened during the Apollo 13 emergency?"
+  },
+  {
+    "id": "disaster_challenger",
+    "category": "disaster analysis",
+    "mission": "challenger",
+    "question": "What do the Challenger STS-51L mission audio transcripts describe?"
+  },
+  {
+    "id": "crew_apollo_11",
+    "category": "crew",
+    "mission": "apollo_11",
+    "question": "What crew activities are described in the Apollo 11 documents?"
+  },
+  {
+    "id": "technical_apollo_13",
+    "category": "technical",
+    "mission": "apollo_13",
+    "question": "What technical procedures or troubleshooting steps are mentioned in the Apollo 13 transcripts?"
+  },
+  {
+    "id": "timeline_apollo_13",
+    "category": "timeline",
+    "mission": "apollo_13",
+    "question": "Summarize the Apollo 13 timeline based on the mission transcripts."
+  }
+]
